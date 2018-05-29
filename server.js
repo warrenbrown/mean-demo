@@ -10,6 +10,7 @@ const api = require('./routes/api');
 const port = process.env.PORT || 3000;
 const config = require('./config/database');
 
+app.use(cors({ orgin: 'http://localhost:4200' }));
 //connect to the database
 mongoose.connect(config.uri, (err) => {
   if (err) {

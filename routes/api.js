@@ -13,11 +13,9 @@ router.get('/users', (req, res) => {
 router.post('/user', (req, res, next) =>
 {
   User.create(req.body, function(err, user) {
-    if (err.code === 11000) {
-      res.send("Username or Email already taken");
-    } else {
-      res.send('User was created');
-    }
+    if (err) return next(err);
+    res.json(user);
+
   });
 });
 
