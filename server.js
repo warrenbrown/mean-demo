@@ -4,6 +4,7 @@ const app = express();
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 
+const api = require('./routes/api');
 const port = process.env.PORT || 3000;
 const config = require('./config/database');
 
@@ -20,13 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 
-app.get('/', (req, res) => {
-  res.send('Welcome to my app');
-});
-
-app.get('/home', (req, res) => {
-  res.send('Welcom to the home page');
-})
+app.use('/api', api);
 
 app.listen(port, function() {
   console.log('Server is running at http://localhost:' + port);
