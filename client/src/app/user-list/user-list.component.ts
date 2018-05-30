@@ -8,6 +8,7 @@ import { UserService } from '../user.service';
 })
 export class UserListComponent implements OnInit {
   users: any;
+  selectedUser: User;
   constructor(private userService: UserService) { }
 
   ngOnInit() {
@@ -15,4 +16,9 @@ export class UserListComponent implements OnInit {
       this.users = users;
     });
   }
+
+  onSelect(user: User): void {
+    this.selectedUser = user;
+  }
+
 }

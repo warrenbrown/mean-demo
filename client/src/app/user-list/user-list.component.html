@@ -1,21 +1,28 @@
 <div class="container">
-  <h1>User list</h1>
+<div class="row">
+  <div class="col">
+    <app-user-detail [user]="selectedUser"></app-user-detail>
+  </div>
+  <div class="col">
+    <h1>User list</h1>
+    <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Username</th>
+        <th scope="col">Email Address</th>
 
-  <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Username</th>
-      <th scope="col">Email Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users" [class.selected]="user === selectedUser" (click)="onSelect(user)">
+        <th scope="row">{{ user.index }}</th>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
 
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let user of users">
-      <th scope="row">{{ users.length + 1}}</th>
-      <td>{{ user.username }}</td>
-      <td>{{ user.email }}</td>
-    </tr>
-  </tbody>
-</table>
 </div>

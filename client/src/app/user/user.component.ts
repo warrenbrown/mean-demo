@@ -16,13 +16,13 @@ export class UserComponent implements OnInit {
   constructor(private userService: UserService, private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
+    this.refreshEmployeelist();
   }
 
   createUser() {
     this.http.post('http://localhost:3000/api/user', this.user)
       .subscribe(res => {
         const id = res['_id'];
-        this.router.navigate(['users/']);
       }, (err) => {
         console.log(err);
       }
